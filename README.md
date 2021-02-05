@@ -10,18 +10,24 @@ View a live demo version on https://tasks.thambaru.com
 
 ## How to get it running
 
-If you want to deploy as is, just clone it and it will run on a configured PHP server (cPanel etc.).
+- If you want to deploy as is, just clone it and it will run on a configured PHP server.
 
-If you want to develop or clone with the required environment, Docker is here. Run `vendor/bin/sail up` for that.
+- If you want to develop or clone with the required environment, Docker is here. Run `vendor/bin/sail up` for that.
 
-For both, go ahead and configure as below:
+For both cases, please go ahead and configure as below:
 
 ## Configuration
 
-As common with laravel, you have to duplicate (copy-paste & rename) `.env.example` to `.env` and set the nessasary valeus such as DB URLs, Application name etc.
-
 1. Run `php migrate` to setup the database
 1. Run `php artisan db:seed` to create a user.
+1. Duplicate (copy-paste & rename) `.env.example` to `.env` and set the nessasary valeus such as DB URLs, Application name etc.
+1. (Optional) Set following values in the .env file as you prefer.
+
+`NUMBER_OF_DAYS_TO_SHOW=14`
+
+`WEEK_STARTS_FROM=1` (0 is for Sunday. If you want to see SAT and SUN, set SHOW_WEEKEND=true)
+
+`SHOW_WEEKEND=false`
 
 ## Usage
 
@@ -39,7 +45,7 @@ WHY? I didn't want to complicate it with password reset and stuff but make it fa
 ## Special Thanks
 
 - Laravel, Bootstrap, and jQuery developers for making life easier.
-- My dearest friend [Sashen Pasindu](https://sashen.me) for assisting in CSS flexbox.
+- My dearest friend [Sashen Pasindu](https://sashen.me) for assisting in CSS flexbox, and testing.
 
 ## License
 
