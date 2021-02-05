@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateTodosTable extends Migration
@@ -15,10 +16,10 @@ class CreateTodosTable extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->string('body');
-            $table->string('assigned_by');
-            $table->date('from_date');
-            $table->date('to_date');
+            $table->string('body')->nullable();
+            $table->string('assigned_by')->nullable();
+            $table->timestamp('start_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('end_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }
