@@ -25,12 +25,21 @@ As common with laravel, you have to duplicate (copy-paste & rename) `.env.exampl
 
 ## Usage
 
-Only signed-in users can add/edit/delete tasks. Goto `/login` to sign-in.
+Only signed-in users can add/edit/delete tasks.
 
-Username is generated dynamically. You will have to check for the `users` table of the database to findout after seeding.
+- Goto `/login` to sign-in.
+
+- Username is generated dynamically.
+
+You will have to check for the `users` table of the database to findout after seeding.
 WHY? I didn't want to complicate it with password reset and stuff but make it fairly secure to make the code public. So, nothing to worry if no one knows your random username even the password is public below. Want to make it secure? Please contribute!
 
-Password is: `l0gMe!n` (Remember it as Log-Me-In)
+- Password is: `l0gMe!n` (Remember it as Log-Me-In)
+
+## Special Thanks
+
+- Laravel, Bootstrap, and jQuery developers for making life easier.
+- My dearest friend [Sashen Pasindu](https://sashen.me) for assisting in CSS flexbox.
 
 ## License
 
