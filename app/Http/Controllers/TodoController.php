@@ -56,15 +56,15 @@ class TodoController extends Controller
     {
 
         $request->validate([
-            'description' => 'required',
+            'body' => 'required',
         ]);
 
         $todo = new Todo();
 
-        $todo->body = $request->description;
+        $todo->body = $request->body;
         $todo->assigned_by = $request->assigned_by;
-        $todo->from_date = self::sanitizeDate($request->from_date);
-        $todo->to_date = self::sanitizeDate($request->to_date);
+        $todo->start_date = self::sanitizeDate($request->start_date);
+        $todo->end_date = self::sanitizeDate($request->end_date);
 
         $todo->save();
 
@@ -84,7 +84,7 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
-        //
+        return $todo;
     }
 
     /**
@@ -109,13 +109,13 @@ class TodoController extends Controller
     {
 
         $request->validate([
-            'description' => 'required',
+            'body' => 'required',
         ]);
 
-        $todo->body = $request->description;
+        $todo->body = $request->body;
         $todo->assigned_by = $request->assigned_by;
-        $todo->from_date = self::sanitizeDate($request->from_date);
-        $todo->to_date = self::sanitizeDate($request->to_date);
+        $todo->start_date = self::sanitizeDate($request->start_date);
+        $todo->end_date = self::sanitizeDate($request->end_date);
 
         $todo->save();
 
