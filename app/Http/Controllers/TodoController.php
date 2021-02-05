@@ -15,11 +15,12 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $now = Carbon::now();
+        
         $days = [];
 
         for ($i = 0; $i < 14; $i++) {
-            $day = $now->startOfWeek(Carbon::MONDAY)->addDays($i);
+
+            $day = Carbon::now()->startOfWeek(Carbon::MONDAY)->addDays($i);
 
             if ($day->dayOfWeek == Carbon::SATURDAY || $day->dayOfWeek == Carbon::SUNDAY)
                 continue;
