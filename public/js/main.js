@@ -36,6 +36,8 @@ $(function() {
 
     $('.delete-button').click(function() {
 
+        if (!confirm("Are you sure want to delete?")) return;
+
         $.ajax({
             type: 'DELETE',
             url: $(this).data('delete-url'),
