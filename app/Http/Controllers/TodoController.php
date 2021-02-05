@@ -15,15 +15,21 @@ class TodoController extends Controller
      */
     public function index()
     {
-        
+
         $days = [];
 
-        for ($i = 0; $i < 14; $i++) {
+        //Load config
+        $numberOfDaysToShow = env('NUMBER_OF_DAYS_TO_SHOW', 14);
+        $weekStartsFrom = env('WEEK_STARTS_FROM', Carbon::MONDAY);
+        $showWeekend = env('SHOW_WEEKEND', false);
 
-            $day = Carbon::now()->startOfWeek(Carbon::MONDAY)->addDays($i);
+        for ($i = 0; $i < $numberOfDaysToShow; $i++) {
 
-            if ($day->dayOfWeek == Carbon::SATURDAY || $day->dayOfWeek == Carbon::SUNDAY)
-                continue;
+            $day = Carbon::now()->startOfWeek($weekStartsFrom)->addDays($i);
+
+            if (!$showWeekend)
+                if ($day->dayOfWeek == Carbon::SATURDAY || $day->dayOfWeek == Carbon::SUNDAY)
+                    continue;
 
             $dayStart = $day->format('Y-m-d H:i');
             $dayEnd = $day->endOfDay()->format('Y-m-d H:i');
@@ -31,10 +37,15 @@ class TodoController extends Controller
             $days[$dayStart] = Todo::where(function ($q) use ($dayStart, $dayEnd) {
                 $q->whereBetween('start_date', [$dayStart, $dayEnd]);
                 $q->orWhereBetween('end_date', [$dayStart, $dayEnd]);
-            })->get();
+            })
+                ->orWhere(function ($q) use ($dayStart, $dayEnd) {
+                    $q->where('start_date', '<=', $dayStart);
+                    $q->where('end_date', '>=', $dayEnd);
+                })
+                ->get();
         }
 
-        return view('dashboard', compact('days'));
+        return view('dashboard', compact('days', 'showWeekend'));
     }
 
     /**

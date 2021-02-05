@@ -10,7 +10,7 @@
 
                 @foreach($days as $day => $todos)
 
-                <div class="p-1 mt-10" style="  flex: 1 20%;">
+                <div class="p-1 mt-10" style="  flex: 1 {{$showWeekend ? '14' : '20'}}%;">
 
                     <h3 class="mb-2">{{Carbon::parse($day)->format('l (d)')}}</h3>
 
