@@ -34,4 +34,14 @@ $(function() {
         });
     });
 
+    $('.delete-button').click(function() {
+
+        $.ajax({
+            type: 'DELETE',
+            url: $(this).data('delete-url'),
+            success: function() {
+                location.reload();
+            }
+        });
+    });
 });

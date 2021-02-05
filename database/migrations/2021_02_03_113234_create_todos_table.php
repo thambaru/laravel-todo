@@ -21,6 +21,7 @@ class CreateTodosTable extends Migration
             $table->timestamp('start_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('end_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
