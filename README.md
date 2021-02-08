@@ -12,22 +12,24 @@ View a live demo version on https://tasks.thambaru.com
 
 - If you want to deploy as is, just clone it and it will run on a configured PHP server.
 
-- If you want to develop or clone with the required environment, Docker is here. Run `vendor/bin/sail up` for that.
+- If you want to develop or clone with the required environment, Docker is here. Run following:
+1. Run `docker run --rm -v $(pwd):/opt -w /opt laravelsail/php80-composer:latest bash -c "composer install && cp .env.example .env && php ./artisan sail:install"`
+1. Run `vendor/bin/sail up`
 
 For both cases, please go ahead and configure as below:
 
 ## Configuration
 
-1. Run `php migrate` to setup the database
+1. Run `php migrate` to setup the database.
 1. Run `php artisan db:seed` to create a user.
 1. Duplicate (copy-paste & rename) `.env.example` to `.env` and set the nessasary valeus such as DB URLs, Application name etc.
 1. (Optional) Set following values in the .env file as you prefer.
 
 `NUMBER_OF_DAYS_TO_SHOW=14`
 
-`WEEK_STARTS_FROM=1` (0 is for Sunday. If you want to see SAT and SUN, set SHOW_WEEKEND=true)
+`WEEK_STARTS_FROM=1` (Weekdays are indexed from 0; as in, 0 = Sunday, 1 = Monday and so on.)
 
-`SHOW_WEEKEND=false`
+`SHOW_WEEKEND=false` (If you want to see SAT and SUN, set SHOW_WEEKEND=true)
 
 ## Usage
 
