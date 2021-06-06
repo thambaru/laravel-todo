@@ -4,10 +4,6 @@ This is a web system built for myself for to keep track of my professional work 
 
 Feel free to contribute, report bugs, and/or improve it. That helps us all.
 
-## Demo
-
-View a live demo version on https://tasks.thambaru.com
-
 ## How to get it running
 
 - If you want to deploy as is, just clone it and it will run on a configured PHP server.
